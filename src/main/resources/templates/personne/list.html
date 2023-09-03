@@ -1,0 +1,56 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+        layout:decorate="~{layout}">
+    <head>
+        <title th:text="#{personne.list.headline}" />
+    </head>
+    <body>
+        <div layout:fragment="content">
+            <div class="d-flex flex-wrap mb-4">
+                <h1 th:text="#{personne.list.headline}" class="flex-grow-1" />
+                <div>
+                    <a th:href="@{/personnes/add}" th:text="#{personne.list.createNew}" class="btn btn-primary ms-2" />
+                </div>
+            </div>
+            <div th:if="${personnes.empty}" th:text="#{personne.list.empty}" />
+            <div th:if="${!personnes.empty}" class="table-responsive">
+                <table class="table table-striped table-hover align-middle">
+                    <thead>
+                        <tr>
+                            <th th:text="#{personne.id.label}" scope="col" />
+                            <th th:text="#{personne.uidPersonne.label}" scope="col" />
+                            <th th:text="#{personne.nomPersonne.label}" scope="col" />
+                            <th th:text="#{personne.prenomPersonne.label}" scope="col" />
+                            <th th:text="#{personne.sexePersonne.label}" scope="col" />
+                            <th th:text="#{personne.naissance.label}" scope="col" />
+                            <th th:text="#{personne.lieuNaissance.label}" scope="col" />
+                            <th th:text="#{personne.baguette.label}" scope="col" />
+                            <th><!-- --></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="personne : ${personnes}">
+                            <td th:text="${personne.id}" />
+                            <td th:text="${personne.uidPersonne}" />
+                            <td th:text="${personne.nomPersonne}" />
+                            <td th:text="${personne.prenomPersonne}" />
+                            <td th:text="${personne.sexePersonne}" />
+                            <td th:text="${personne.naissance}" />
+                            <td th:text="${personne.lieuNaissance}" />
+                            <td th:text="${personne.baguette}" />
+                            <td>
+                                <div class="float-end text-nowrap">
+                                    <a th:href="@{/personnes/edit/{id}(id=${personne.id})}" th:text="#{personne.list.edit}" class="btn btn-sm btn-secondary" />
+                                    <form th:action="@{/personnes/delete/{id}(id=${personne.id})}"
+                                            th:hx-confirm="#{delete.confirm}" method="post" class="d-inline">
+                                        <button th:text="#{personne.list.delete}" type="submit" class="btn btn-sm btn-secondary" />
+                                    </form>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </body>
+</html>

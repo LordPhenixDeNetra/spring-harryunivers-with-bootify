@@ -1,0 +1,46 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+        layout:decorate="~{layout}">
+    <head>
+        <title th:text="#{personne.add.headline}" />
+    </head>
+    <body>
+        <div layout:fragment="content">
+            <div class="d-flex flex-wrap mb-4">
+                <h1 th:text="#{personne.add.headline}" class="flex-grow-1" />
+                <div>
+                    <a th:href="@{/personnes}" th:text="#{personne.add.back}" class="btn btn-secondary" />
+                </div>
+            </div>
+            <div th:replace="~{fragments/forms::globalErrors('personne')}" />
+            <form th:action="${requestUri}" method="post">
+                <div th:replace="~{fragments/forms::inputRow(object='personne', field='uidPersonne')}" />
+                <div th:replace="~{fragments/forms::inputRow(object='personne', field='nomPersonne')}" />
+                <div th:replace="~{fragments/forms::inputRow(object='personne', field='prenomPersonne')}" />
+                <div th:replace="~{fragments/forms::inputRow(object='personne', field='sexePersonne', type='radio')}" />
+                <div th:replace="~{fragments/forms::inputRow(object='personne', field='naissance')}" />
+                <div th:replace="~{fragments/forms::inputRow(object='personne', field='lieuNaissance')}" />
+                <div th:replace="~{fragments/forms::inputRow(object='personne', field='baguette')}" />
+                <div th:replace="~{fragments/forms::inputRow(object='personne', field='patronus')}" />
+                <div th:replace="~{fragments/forms::inputRow(object='personne', field='animalCompagnie')}" />
+                <div th:replace="~{fragments/forms::inputRow(object='personne', field='animagus', type='checkbox')}" />
+                <div th:replace="~{fragments/forms::inputRow(object='personne', field='animalForme')}" />
+                <div th:replace="~{fragments/forms::inputRow(object='personne', field='avatar')}" />
+                <div th:replace="~{fragments/forms::inputRow(object='personne', field='personneType', type='radio')}" />
+                <div th:replace="~{fragments/forms::inputRow(object='personne', field='otherType', type='select')}" />
+                <div th:replace="~{fragments/forms::inputRow(object='personne', field='debutEtude')}" />
+                <div th:replace="~{fragments/forms::inputRow(object='personne', field='finEtude')}" />
+                <div th:replace="~{fragments/forms::inputRow(object='personne', field='debutDirecteurEcole')}" />
+                <div th:replace="~{fragments/forms::inputRow(object='personne', field='finDirecteurEcole')}" />
+                <div th:replace="~{fragments/forms::inputRow(object='personne', field='debutDirecteurMaison')}" />
+                <div th:replace="~{fragments/forms::inputRow(object='personne', field='finDirecteurMaison')}" />
+                <div th:replace="~{fragments/forms::inputRow(object='personne', field='email')}" />
+                <div th:replace="~{fragments/forms::inputRow(object='personne', field='username')}" />
+                <div th:replace="~{fragments/forms::inputRow(object='personne', field='password')}" />
+                <div th:replace="~{fragments/forms::inputRow(object='personne', field='ecole', type='select')}" />
+                <div th:replace="~{fragments/forms::inputRow(object='personne', field='maison', type='select')}" />
+                <input type="submit" th:value="#{personne.add.headline}" class="btn btn-primary mt-4" />
+            </form>
+        </div>
+    </body>
+</html>
